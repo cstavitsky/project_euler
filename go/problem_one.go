@@ -9,20 +9,22 @@ import(
   "fmt"
 )
 
-func findMultiples(num int, factors ...int) map[int]bool {
-
-  // Gather all unique factors
-  allMultiples := make(map[int]bool)
-
-  for _, f := range factors {
-    if num % f == 0 && allMultiples[f] == false {
-      allMultiples[f] = true
-    }
+func sum(nums []int) int {
+  var sum int
+  for _, v := range nums {
+    sum += v
   }
-
-  return allMultiples
+  return sum
 }
 
 func main(){
-  fmt.Print(findMultiples(10, 3, 5))
+  var multiples []int
+
+  for i := 0; i < 1000; i++ {
+    if i % 15 == 0 || i % 3 == 0 || i % 5 == 0 {
+      multiples = append(multiples, i)
+    }
+  }
+
+  fmt.Println(sum(multiples))
 }
